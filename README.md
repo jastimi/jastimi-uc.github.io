@@ -140,11 +140,138 @@ Included file `waph.html`:
 
 _Target this profile for your potential employer, and your page will be graded as a part of your job application​_
 
+
+Used the page tracker [https://analytics](https://analytics.withgoogle.com/)]
+
+The code inserted for tracking page is:
+
+```js
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HGPH8NKPC0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HGPH8NKPC0');
+</script>
+
+```
+
 + Include a page tracker, for example: [https://analytics](https://analytics.withgoogle.com/)](https://analytics.withgoogle.com/), [https://flagcounter.com/](https://flagcounter.com/).
 
 ### Technical requirements (50 pts)​
 
 #### Basic JavaScript code (20 pts)​
+
+```html
+<section class="resume-section" id="home">
+<div class="resume-section-content">
+  <!-- Show/hide email -->
+  <div id="email">Show my email</div>
+
+  <!-- Digital clock -->
+  <div id="digit-clock">{{ digitalClock }}</div>
+
+  <!-- Analog clock -->
+  <canvas id="analog-clock" width="300" height="300" style="background-color: #999"></canvas>
+
+  <div style="margin-bottom: 90px;"></div>
+  <h3>Social Media Sharing</h3>
+
+  <!-- Facebook Share Button -->
+  <button ng-click="shareOnFacebook()">Share on Facebook</button><br><br>
+
+  <!-- Twitter Share Button -->
+  <button ng-click="shareOnTwitter()">Share on Twitter</button><br><br>
+
+  <!-- LinkedIn Share Button -->
+  <button ng-click="shareOnLinkedIn()">Share on LinkedIn</button><br><br>
+
+</div>
+</section>
+
+```
+
+```Angular js
+var app = angular.module('myApp', []);
+
+app.controller('myCtrl', function($scope, $window, $interval) {
+    // Function to share content on Facebook
+    $scope.shareOnFacebook = function() {
+        var url = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent($window.location.href);
+        $window.open(url, '_blank');
+    };
+
+
+    // Function to share content on Twitter
+    $scope.shareOnTwitter = function() {
+        var url = 'https://twitter.com/intent/tweet?url=' + encodeURIComponent($window.location.href);
+        $window.open(url, '_blank');
+    };
+
+    // Function to share content on LinkedIn
+    $scope.shareOnLinkedIn = function() {
+        var url = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent($window.location.href);
+        $window.open(url, '_blank');
+    };
+
+    // Function to show/hide email
+    $scope.emailButtonLabel = "Show my email";
+    $scope.showhideEmail = function() {
+        if ($scope.emailButtonLabel === "Show my email") {
+            var myemail = "<a href='mailto:jastimi" + "@" + "mail.uc.edu'>jastimi" + "@" + "mail.uc.edu</a>";
+            $scope.emailButtonLabel = myemail;
+        } else {
+            $scope.emailButtonLabel = "Show my email";
+        }
+    };
+
+    // Function to display digital clock
+    $scope.displayTime = function() {
+        var now = new Date();
+        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        $scope.digitalClock = 'Current time: ' + now.toLocaleTimeString() + ' on ' + now.toLocaleDateString(undefined, options);
+    };
+    $interval($scope.displayTime, 500);
+
+    // Analog clock
+    var canvas = document.getElementById("analog-clock");
+    var ctx = canvas.getContext("2d");
+    var radius = canvas.height / 2;
+    ctx.translate(radius, radius);
+    radius = radius * 0.90;
+    $interval(drawClock, 1000);
+
+    function drawClock() {
+        drawFace(ctx, radius);
+        drawNumbers(ctx, radius);
+        drawTime(ctx, radius);
+    }
+});
+
+
+```
+
+``` jquery js
+var shown = false;
+
+// Function to show/hide email using jQuery
+function showhideEmail() {
+  if (shown) {
+    $('#email').html("Show my email");
+    shown = false;
+  } else {
+    var myemail = "<a href='mailto:jastimi@mail.uc.edu'>jastimi@mail.uc.edu</a>";
+    $('#email').html(myemail);
+    shown = true;
+  }
+}
+
+// Attach click event handler using jQuery
+$('#email').click(showhideEmail);
+```
 
 + Use jQuery and one more open-source JavaScript framework/library​ to implement JavaScript code introduced in Lab 2, including, a digital clock; an analog clock; show/hide your email; and one more functionality of your choice. **(5 pts each)**
 
