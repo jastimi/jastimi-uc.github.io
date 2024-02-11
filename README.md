@@ -194,7 +194,7 @@ The code inserted for tracking page is:
 
 ```
 
-```Angular js
+```js
 var app = angular.module('myApp', []);
 
 app.controller('myCtrl', function($scope, $window, $interval) {
@@ -254,7 +254,7 @@ app.controller('myCtrl', function($scope, $window, $interval) {
 
 ```
 
-``` jquery js
+```js
 var shown = false;
 
 // Function to show/hide email using jQuery
