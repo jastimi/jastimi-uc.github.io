@@ -15,12 +15,18 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
 
+        <!-- CSS code for home page-->
+        <link href="css/homestyle.css" rel="stylesheet" />
+
         <!-- Link AngularJS -->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 
         <!--Link jquery -->
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
+        <!--import cookies library-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
+        
         <style>
             /* Additional styling for clocks */
             #digital-clock {
@@ -187,29 +193,50 @@
                 </div>
             </section>
             <hr class="m-0" />
-            <!--Other-->
+            <!--Home-->
             <section class="resume-section" id="home">
                 <div class="resume-section-content">
-                  <!-- Show/hide email -->
-                  <div id="email">Show my email</div>
 
-                  <!-- Digital clock -->
-                  <div id="digit-clock">{{ digitalClock }}</div>
+                    <!-- Welcome message -->
+                    <h3 id="welcomeMessage"></h3>
 
-                  <!-- Analog clock -->
-                  <canvas id="analog-clock" width="300" height="300" style="background-color: #999"></canvas>
+                    <!-- Show/hide email -->
+                    <div id="email">Show my email</div>
 
-                  <div style="margin-bottom: 90px;"></div>
-                  <h3>Social Media Sharing</h3>
+                    <!-- Digital clock -->
+                    <div id="digit-clock">{{ digitalClock }}</div>
 
-                  <!-- Facebook Share Button -->
-                  <button ng-click="shareOnFacebook()">Share on Facebook</button><br><br>
+                    <!-- Analog clock -->
+                    <canvas id="analog-clock" width="300" height="300" style="background-color: #999"></canvas>
 
-                  <!-- Twitter Share Button -->
-                  <button ng-click="shareOnTwitter()">Share on Twitter</button><br><br>
+                    <!-- Joke display -->
+                    <div class="joke-section">
+                        <h4>Joke of the Day</h4>
+                        <div id="joke">{{ joke }}</div>
+                    </div>
 
-                  <!-- LinkedIn Share Button -->
-                  <button ng-click="shareOnLinkedIn()">Share on LinkedIn</button><br><br>
+                    <!-- Weather Forecast -->
+                    <div class="weather-forecast">
+                        <h4>Weather Forecast</h4>
+                        <div class="weather-input">
+                            <label for="city">Enter city:</label>
+                            <input type="text" id="city" placeholder="City name">
+                            <button id="get-weather-btn">Get Weather</button>
+                        </div>
+                        <div id="weather-container">
+                            <h4 id="city-name"></h4>
+                            <p id="temperature"></p>
+                            <img id="weather-icon" src="" alt="">
+                        </div>
+                    </div>
+
+                    <!-- Social Media Sharing -->
+                    <div class="social-media-sharing">
+                        <h4>Social Media Sharing</h4>
+                        <button ng-click="shareOnFacebook()">Share on Facebook</button>
+                        <button ng-click="shareOnTwitter()">Share on Twitter</button>
+                        <button ng-click="shareOnLinkedIn()">Share on LinkedIn</button>
+                    </div>
 
                 </div>
             </section>
