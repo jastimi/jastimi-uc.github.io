@@ -1,14 +1,32 @@
 # WAPH-Web Application Programming and Hacking
 ## Instructor: Dr. Phu Phung
 
+## Student
+
+**Name**: Mohan Sai Jasti
+
+**Email**: jastimi@mail.uc.edu
+
+**Short-bio**: Mohan has keen interests in web development and DevOps.
+
+![Mohan's headshot](/images/headshot2.jpg)
+
 # Individual Project 1
 ## Front-end Web Development with a Professional Profile Website on github.io cloud service
 
 ## Overview and Requirements 
 
-In this project, you will expand front-end web development skills by developing a Professional Profile Website and deploying it on `github.io` cloud service. This project has general, non-technical, and technical requirements with grade distributions as follows.
+This project encompasses the development of a personal website aimed at showcasing Mohan Sai Jasti's professional profile. Leveraging GitHub's cloud hosting service, the website is built primarily using HTML with enhancements from Bootstrap templates.Furthermore, the website is equipped with various JavaScript functionalities, including show/hide email, digital and analog clocks, and social media sharing buttons, and the integration of a page tracker from Google Analytics to monitor website traffic. Additionally, two public web APIs, namely the JokeAPI and WeatherAPI, are integrated to display jokes and current weather information dynamically.
 
-### General requirements (30 pts): 
+clikable url to my website [https://jastimi.github.io/](https://jastimi.github.io/)
+
+Direct clickable link to my lab folder on GitHub.com [https://github.com/jastimi/jastimi.github.io](https://github.com/jastimi/jastimi.github.io).
+
+
+### General requirements:  ​
+
+I created a personal website on GitHub cloud (github.io) as a professional profile using the "index.html" file.
+Below is the code and working screenshot of the website. 
 
 Included file `index.html`:
 
@@ -72,6 +90,10 @@ Included file `index.html`:
 
 ```
 
+![screenshot1.png](/images/P1screenshot1.png)
+
+
+I created a new html page "waph.html" to introduce the WAPH course and linked it to my professional profile page.
 
 Included file `waph.html`:
 
@@ -130,18 +152,20 @@ Included file `waph.html`:
 
 ```
 
-+ Create and deploy a personal website on GitHub cloud (github.io) as a professional profile with your resume, including your name, headshot, contact information, background, e.g., education, your experiences and skills (25 pts).
- ​
-+ Create a link to a new HTML page to introduce this "Web Application Programming and Hacking" course and related hands-on projects (5 pts)
- ​
-### Non-technical requirements (20 pts)​
-
-+ Use an open-source CSS template or framework such as Bootstrap​
-
-_Target this profile for your potential employer, and your page will be graded as a part of your job application​_
+![screenshot2.png](/images/P1screenshot2.png)
 
 
-Used the page tracker [https://analytics](https://analytics.withgoogle.com/)]
+### Non-technical requirements​
+
+
+I updated my professional page with Bootstrap template from [https://startbootstrap.com/previews/resume#google_vignette](https://startbootstrap.com/previews/resume#google_vignette
+)
+Below is the scrrenshot of my page after adding bootstrap templates.
+
+![screenshot3](/images/P1screenshot3.png)
+
+
+Next I used the page tracker from [https://analytics](https://analytics.withgoogle.com/) to count the views to my page. 
 
 The code inserted for tracking page is:
 
@@ -158,12 +182,19 @@ The code inserted for tracking page is:
 </script>
 
 ```
+Below is the screenshot from page tracker showing the number of views of my website.
 
-+ Include a page tracker, for example: [https://analytics](https://analytics.withgoogle.com/)](https://analytics.withgoogle.com/), [https://flagcounter.com/](https://flagcounter.com/).
+![screenshot4](/images/P1screenshot4.png)
 
-### Technical requirements (50 pts)​
 
-#### Basic JavaScript code (20 pts)​
+### Technical requirements ​
+
+#### Basic JavaScript code ​
+
+
+I used jQuery to implement the javascript code of show/hide your email and angular JS to implement the code of digital clock and analog clock. I also implemented a new functionality for sharing my pages on social media sites.
+
+This is the html code for these functionalities.
 
 ```html
 <section class="resume-section" id="home">
@@ -193,6 +224,8 @@ The code inserted for tracking page is:
 </section>
 
 ```
+
+Below is the angular js code.
 
 ```js
 var app = angular.module('myApp', []);
@@ -254,6 +287,8 @@ app.controller('myCtrl', function($scope, $window, $interval) {
 
 ```
 
+Below is the jQuery code.
+
 ```js
 var shown = false;
 
@@ -273,34 +308,102 @@ function showhideEmail() {
 $('#email').click(showhideEmail);
 ```
 
-+ Use jQuery and one more open-source JavaScript framework/library​ to implement JavaScript code introduced in Lab 2, including, a digital clock; an analog clock; show/hide your email; and one more functionality of your choice. **(5 pts each)**
++ Two public Web APIs integration ​
 
-+ Two public Web APIs integration (20 pts)​
+Integrated the jokeAPI from ([https://v2.jokeapi.dev/joke/Any](https://v2.jokeapi.dev/joke/Any). This displays any category of joke in my page every 1 minute. Below is the code of this api.
 
-1. Integrate the jokeAPI ([https://v2.jokeapi.dev/joke/Any](https://v2.jokeapi.dev/joke/Any), similar to Lab 2.2.d.i) with Any category of joke to display a new joke in your page every 1 minute
+```js
+$(document).ready(function() {
+    // Function to fetch a new joke from the JokeAPI
+    function fetchJoke() {
+        $.get("https://v2.jokeapi.dev/joke/Any",
+            function(result) {
+                if (result.error) {
+                    console.error("Error fetching joke: " + result.message);
+                    return;
+                }
+                console.log("From jokeAPI: " + JSON.stringify(result));
+                if (result.type === "single") {
+                    $("#joke").html("Here's a joke for you: " + encodeInput(result.joke));
+                } else if (result.type === "twopart") {
+                    $("#joke").html("Here's a joke for you: " + encodeInput(result.setup) + "<br>" + encodeInput(result.delivery));
+                }
+            });
+    }
 
-2. Integrate a public API with graphics. Examples: [https://xkcd.com/info.0.json](https://xkcd.com/info.0.json), [https://www.weatherbit.io](https://www.weatherbit.io).
+    // Initial fetch of joke
+    fetchJoke();
 
-+ Use JavaScript cookies to remember the client (10 pts): If first-time visit, display a message "Welcome to my homepage!", otherwise, display a message "Welcome back! Your last visit was <the date/time of last visit>"
+    // Fetch a new joke every minute
+    setInterval(fetchJoke, 60000);
 
+    // Function to encode special characters
+    function encodeInput(input) {
+        return $("<div>").text(input).html();
+    }
+});
 
-## Report
+```
 
-You can write a report using Markdown format or any Word processor, i.e., you do not need to use Markdown to write your report. Your report should follow the template/outline provided in Lecture 2 ([https://github.com/phungph-uc/waph/blob/main/README-template.md](https://github.com/phungph-uc/waph/blob/main/README-template.md)) which should include the course name and instructor, your name and email together with your headshot (150x150 pixels), and sub-sections of the assignment's overview, and each task and sub-task.
+Integrated the weatherAPI from [https://www.weatherbit.io](https://www.weatherbit.io). This display the current weather of a city that the user entered. 
 
-There should be an overview sub-section where you must write an overview of the assignment and the outcomes you learned from it. Include your website's clickable URL deployed on `github.io`. Also, include a direct clickable link to the project folder on GitHub.com so that it can be viewed when grading, for example, [https://github.com/phungph-uc/waph-phungph/tree/main/individual-project1](https://github.com/phungph-uc/waph-phungph/tree/main/individual-project1).
+Below is the code of this api.
 
-For each sub-task, write a brief summary of how you complete it. You are welcome to include code snippets and screenshots to demonstrate the outcome, however, they are not required. **Please note that demo screenshots must include your virtual machine name or your name with proper captions and be visible, i.e., in high resolution, not too blurry or with much blank space, for grading**. 
+```js
+$(document).ready(function() {
+  $("#get-weather-btn").click(function() {
+    var city = $("#city").val();
+    // API request URL
+    var apiUrl = "https://api.weatherbit.io/v2.0/current?city=" + city + "&key=311a3d25109f43f4a0fcc2dd49534e98";
 
-Your report must be exported in  PDF with contents and screenshots are correctly rendered in proper order. The PDF file should be named `your-username-waph-project1.pdf`, e.g., `phungph-waph-project1.pdf`, and uploaded to Canvas to submit by the deadline. 
+    // Fetch weather data from the API
+    $.getJSON(apiUrl, function(response) {
+      var weatherData = response.data[0]; // Assuming the first result is the current weather
+      var cityName = weatherData.city_name;
+      var temperature = weatherData.temp;
+      var weatherIcon = weatherData.weather.icon;
+      var weatherDescription = weatherData.weather.description;
 
+      // Display weather information on the page
+      $("#city-name").text(cityName);
+      $("#temperature").text("Temperature: " + temperature + "°C");
+      $("#weather-icon").attr("src", "https://www.weatherbit.io/static/img/icons/" + weatherIcon + ".png").attr("alt", weatherDescription);
+    })
+    .fail(function(error) {
+      console.error("Error fetching weather data:", error);
+    });
+  });
+});
 
-## Deliverables and Submission
+```
 
-You need to submit **three** deliverables in PDF files for grading:
+Finally, I implemented the javascript cookies to remember the client. This displays "Welcome to my homepage!", if it first-time visit. Else it displays "Welcome back! Your last visit was <the date/time of last visit>".
 
-+ Your report mentioned above.
+Below is the code of this functionality.
 
-+ Your deployed website printed from a browser in PDF.
+```js
+function setLastVisitCookie() {
+        var lastVisit = Cookies.get('lastVisit');
+        if (lastVisit) {
+            // If cookie exists, display welcome back message with last visit time
+            $('#welcomeMessage').text("Welcome back! Your last visit was " + lastVisit);
+        } else {
+            // If cookie doesn't exist, display first-time visit message
+            $('#welcomeMessage').text("Welcome to my homepage!");
+            // Set cookie for the current visit
+            Cookies.set('lastVisit', new Date().toLocaleString("en-US", {timeZone: "America/New_York"}));
+        }
+    }
 
-+  The source code of your deployed website printed from a browser in PDF.
+    // Get current time in EST
+    $('#currentTime').text("Current Eastern Standard Time: " + new Date().toLocaleString("en-US", {timeZone: "America/New_York"}));
+    
+    // Call the function to set and get the cookie
+    setLastVisitCookie();
+    
+```
+
+This is screenshot of my home page showing all these functionalities.
+
+![screenshot5.png](/images/P1screenshot5.png)
+
