@@ -160,7 +160,7 @@ Included file `waph.html`:
 
 I updated my professional page with Bootstrap template from [https://startbootstrap.com/previews/resume#google_vignette](https://startbootstrap.com/previews/resume#google_vignette
 )
-Below is the scrrenshot of my page after adding bootstrap templates.
+Below is the screenshot of my page after adding bootstrap templates.
 
 ![screenshot3](/images/P1screenshot3.png)
 
@@ -192,7 +192,7 @@ Below is the screenshot from page tracker showing the number of views of my webs
 #### Basic JavaScript code ​
 
 
-I used jQuery to implement the javascript code of show/hide your email and angular JS to implement the code of digital clock and analog clock. I also implemented a new functionality for sharing my pages on social media sites.
+I used jQuery to implement the javascript code of show/hide your email and angular js to implement the code of digital clock and analog clock. I also implemented a new functionality for sharing my pages on social media sites.
 
 This is the html code for these functionalities.
 
