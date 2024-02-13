@@ -9,7 +9,7 @@
 
 **Short-bio**: Mohan has keen interests in web development and DevOps.
 
-![Mohan's headshot](/images/headshot2.jpg)
+![Mohan's headshot](./images/headshot2.jpg)
 
 # Individual Project 1
 ## Front-end Web Development with a Professional Profile Website on github.io cloud service
@@ -90,7 +90,7 @@ Included file `index.html`:
 
 ```
 
-![screenshot1.png](/images/P1screenshot1.png)
+![screenshot1.png](./images/P1screenshot1.png)
 
 
 I created a new html page "waph.html" to introduce the WAPH course and linked it to my professional profile page.
@@ -152,7 +152,7 @@ Included file `waph.html`:
 
 ```
 
-![screenshot2.png](/images/P1screenshot2.png)
+![screenshot2.png](./images/P1screenshot2.png)
 
 
 ### Non-technical requirements​
@@ -162,7 +162,7 @@ I updated my professional page with Bootstrap template from [https://startbootst
 )
 Below is the screenshot of my page after adding bootstrap templates.
 
-![screenshot3](/images/P1screenshot3.png)
+![screenshot3](./images/P1screenshot3.png)
 
 
 Next I used the page tracker from [https://analytics](https://analytics.withgoogle.com/) to count the views to my page. 
@@ -184,7 +184,7 @@ The code inserted for tracking page is:
 ```
 Below is the screenshot from page tracker showing the number of views of my website.
 
-![screenshot4](/images/P1screenshot4.png)
+![screenshot4](./images/P1screenshot4.png)
 
 
 ### Technical requirements ​
