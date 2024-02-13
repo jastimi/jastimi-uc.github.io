@@ -405,5 +405,5 @@ function setLastVisitCookie() {
 
 This is screenshot of my home page showing all these functionalities.
 
-![screenshot5.png](/images/P1screenshot5.png)
+![screenshot5.png](./images/P1screenshot5.png)
 
